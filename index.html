@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    ::-webkit-scrollbar{
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track{
+        background: #122b42;
+    }
+    ::-webkit-scrollbar-thumb{
+        background: #2d6fff;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        overflow-x: hidden;
+        width: 100vw;
+        height: 300vh;
+        
+    }
+    h1 {
+        position: fixed;
+        top: 0;
+    }
+    video{
+        position: fixed;
+        top:10px;
+        width: 80%;
+        height: 100VH;
+        object-position: bottom;
+        object-fit: contain;
+    }
+</style>
+<body>
+    <video src="need.mp4"></video>
+    <h1></h1>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+
+        function scrol(){
+
+            var vid = $('video').get(0);
+            var len = vid.duration;
+            var pos = $(document).scrollTop();
+            vid.currentTime = (pos/($(document).height()-$(window).height()))*len;
+        }
+        $(window).scroll(function(e){
+            scrol();
+        })
+    </script>
+</body>
+</html>
